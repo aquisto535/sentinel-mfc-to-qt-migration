@@ -1,0 +1,1 @@
+# sentinel-mfc-to-qt-migration
