@@ -1,4 +1,4 @@
-# sentinel-mfc-to-qt-migration
+# 🛡️ Sentinel Manager — 서버 보안 모니터링 클라이언트 (POC)
 
 > **서버의 보안 상태를 실시간으로 감시하고 보안 정책을 실행하는 클라이언트 프로그램.**  
 > **레거시 MFC 기반의 Windows 전용 구조를 Modern C++17 + Qt6로 전환하여,**  
@@ -125,7 +125,7 @@ MFC Dialog를 Qt6 Widget으로 재구성하고, 서버와 실시간으로 통신
 
 **데이터 흐름:**
 ```
-[10초 타이머] → LOG_REQ 패킷 전송 → [MockServer] 로그 수집
+[10초 타이머] → LOG_REQ 패킷 전송 → [Sentinel Server] 로그 수집
     → LOG_RES 패킷 수신 → [Qt 테이블] 행 추가 → 최신 로그로 자동 스크롤
 ```
 
@@ -208,12 +208,14 @@ docker run -d \
 
 | 환경 | 역할 | 검증 내용 |
 | :--- | :--- | :--- |
-| Windows 11 (MinGW-w64 13.1.0) | 클라이언트 개발 | Qt6 빌드, WinEventLog 수집, UI 렌더링 |
-| WSL Ubuntu 22.04 | 리눅스 서버 테스트 | LinuxJournalProvider 빌드 및 실시간 수집 |
-| Docker Desktop (Ubuntu 22.04) | 배포 자동화 검증 | 멀티 스테이지 빌드, 컨테이너 실행 |
+| Windows 10 (MinGW-w64 13.1.0) | 클라이언트 개발 & 테스트 | Qt6 빌드, WinEventLog 수집, GUI 렌더링 |
+| Windows Server 2025 (VM) | 서버 테스트 | Windows Server 네이티브 환경 로그 수집 검증 |
+| Ubuntu 24.04 (VM) | 클라이언트 테스트 | Linux 환경에서의 Qt6 GUI 동작 및 서버 연동 확인 |
+| WSL Ubuntu 22.04 | 리눅스 서버 테스트 | LinuxJournalProvider 빌드 및 실시간 저널 수집 |
+| Docker Desktop (Ubuntu 22.04) | 배포 자동화 검증 | 멀티 스테이지 빌드 및 컨테이너 실행 |
 
 **실제 테스트 완료된 시나리오:**
-1. WSL Ubuntu에서 `MockServer` 빌드 및 실행 (`port 8080`)
+1. WSL Ubuntu에서 `Sentinel Server` 빌드 및 실행 (`port 8080`)
 2. Windows Qt 클라이언트에서 WSL IP(`172.25.x.x`)로 접속
 3. `logger -p user.info "메시지"` 명령 입력 → Qt 화면 테이블에 실시간 표시 ✅
 
