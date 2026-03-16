@@ -226,7 +226,8 @@ docker run -d \
 | 분류 | 기술 |
 | :--- | :--- |
 | **언어** | C++17 |
-| **프레임워크** | Qt 6.x (Core, Network, Widgets) |
+| **프레임워크** | Qt 6.10 (Core, Network, Widgets) |
+| **AI Partner** | Antigravity (Agentic Coding & AI-Driven TDD) |
 | **빌드** | CMake 3.22+ |
 | **컴파일러** | MinGW-w64 GCC 13.1 (Windows), GCC 11 (Linux) |
 | **로깅** | spdlog 1.14 (`FetchContent`) |
@@ -234,6 +235,17 @@ docker run -d \
 | **컨테이너** | Docker (멀티 스테이지 빌드, Ubuntu 22.04) |
 | **Linux 로그** | libsystemd (`sd-journal.h`) |
 | **Windows 로그** | Windows Event Log API (`winevt.h`) |
+
+---
+
+## 🛠️ 엔지니어링 방법론 (Engineering Methodology)
+
+본 프로젝트는 단순한 기능 구현을 넘어, 최신 AI 기술과 엄격한 소프트웨어 공학 원칙을 결합하여 고품질의 코드를 지향합니다.
+
+- **AI Agent-Driven Development**: **Antigravity AI 에이전트**와 상호작용하며 레거시 코드의 복잡한 패턴을 빠르게 해체하고, Modern C++ 기반의 최적 마이그레이션 전략을 수립했습니다.
+- **제1원칙 사고 (First Principles Thinking)**: 고정관념을 배제하고 문제를 근본적인 진실 단위로 분해하여, 폐쇄망 CI/CD 구축 및 크로스 플랫폼 로그 수집과 같은 기술적 난제를 바텀업(Bottom-up) 방식으로 해결했습니다.
+- **TDD (Test-Driven Development)**: `Google Test` 기반의 Red-Green-Refactor 사이클을 준수하여 로직의 견고함을 확보하고, 대규모 리팩토링 시에도 기능의 무결성을 증명했습니다.
+- **정돈 우선 (Tidy First)**: 구조적인 변경(Refactoring)과 기능적인 변경(Feature)을 명확히 분리하여 커밋함으로써, 가독성 높은 클린 코드를 유지했습니다.
 
 ---
 
